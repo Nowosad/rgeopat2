@@ -2,7 +2,7 @@
 % Please edit documentation in R/gpat_gridcreate.R
 \name{gpat_header_parser}
 \alias{gpat_header_parser}
-\title{Parse a header of the geoPAT 2.0 grid file}
+\title{Parse a header of a geoPAT 2.0 grid file}
 \usage{
 gpat_header_parser(x)
 }
@@ -13,5 +13,5 @@ gpat_header_parser(x)
 data_frame
 }
 \description{
-Extracts basic information from the geoPAT 2.0 grid header file
+Extracts basic information from a geoPAT 2.0 grid header file
 }

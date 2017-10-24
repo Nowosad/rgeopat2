@@ -20,7 +20,7 @@ gpat_st_make_grid(x, cellsize = c(diff(st_bbox(x)[c(1, 3)]),
 sfc_POLYGON
 }
 \description{
-Creates a polygon of the gpat grid based on a given parameters
+Creates a polygon of a gpat grid based on a given parameters
 }
 \examples{
 \dontrun{

@@ -15,7 +15,7 @@ gpat_gridcreate(x, proj = TRUE)
 sfc_POLYGON
 }
 \description{
-Creates a polygon of the gpat grid based on a grid header
+Creates a polygon of a geoPAT grid based on the grid header
 }
 \examples{
 header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package="rgeopat2")

@@ -1,6 +1,6 @@
 #' Grid polygon creator
 #'
-#' Creates a polygon of the gpat grid based on a grid header
+#' Creates a polygon of a geoPAT grid based on the grid header
 #'
 #' @param x A filepath to the geoPAT 2.0 grid header file
 #' @param proj TRUE/FALSE; should a new grid polygon inherit spatial projection from the geoPAT 2.0 grid header file
@@ -39,9 +39,9 @@ gpat_gridcreate = function(x, proj = TRUE){
   my_grid
 }
 
-#' Parse a header of the geoPAT 2.0 grid file
+#' Parse a header of a geoPAT 2.0 grid file
 #'
-#' Extracts basic information from the geoPAT 2.0 grid header file
+#' Extracts basic information from a geoPAT 2.0 grid header file
 #'
 #' @param x A filepath to the geoPAT 2.0 grid header file
 #'
@@ -67,7 +67,7 @@ gpat_header_parser = function(x){
 
 #' Grid polygon creator (without a header)
 #'
-#' Creates a polygon of the gpat grid based on a given parameters
+#' Creates a polygon of a gpat grid based on a given parameters
 #'
 #' @param x An object of class sf or sfc
 #' @param cellsize A target cellsize
