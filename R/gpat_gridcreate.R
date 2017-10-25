@@ -7,7 +7,7 @@
 #'
 #' @return sfc_POLYGON
 #'
-#' @importFrom sf %>% st_polygon st_sfc st_set_crs
+#' @importFrom sf %>% st_polygon st_sfc st_set_crs st_sf
 #'
 #' @examples
 #' header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package="rgeopat2")
@@ -121,5 +121,5 @@ gpat_st_make_grid = function (x,
     }
   }
 
-  st_sfc(ret, crs = st_crs(x))
+  st_sf(st_sfc(ret, crs = st_crs(x)))
 }
