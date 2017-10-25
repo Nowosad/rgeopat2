@@ -47,9 +47,8 @@ gpat_gridcreate = function(x, proj = TRUE){
 #'
 #' @return data_frame
 #'
-#' @importFrom sf %>%
+#' @importFrom sf %>% st_crs
 #' @importFrom stringr str_sub
-#' @importFrom rgdal showP4
 gpat_header_parser = function(x){
   x = readLines(x)
   res_x = str_sub(x[5], start=6) %>% as.double()
@@ -58,7 +57,7 @@ gpat_header_parser = function(x){
   start_y = str_sub(x[7], start=6) %>% as.double()
   n_rows = str_sub(x[10], start=7) %>% as.integer()
   n_cols = str_sub(x[11], start=7) %>% as.integer()
-  proj_4 = str_sub(x[12], start=7) %>% showP4()
+  proj_4 = st_crs(wkt = str_sub(x[12], start=7))$proj4string
   data.frame(res_x = res_x, res_y = res_y,
              start_x = start_x, start_y = start_y,
              n_rows = n_rows, n_cols = n_cols,

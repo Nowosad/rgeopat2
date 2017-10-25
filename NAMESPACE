@@ -3,7 +3,6 @@
 export(gpat_gridcreate)
 export(gpat_read_distmtx)
 importFrom(readr,read_csv)
-importFrom(rgdal,showP4)
 importFrom(sf,"%>%")
 importFrom(sf,st_bbox)
 importFrom(sf,st_crs)

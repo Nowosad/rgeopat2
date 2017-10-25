@@ -1,6 +1,6 @@
 Package: rgeopat2
 Title: Additional functions for geoPAT 2.0
-Version: 0.0.4
+Version: 0.0.5
 Authors@R: person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -10,7 +10,6 @@ Description: Supports analysis of spatial data processed with the geoPAT 2.0 sof
 Depends: R (>= 3.4.1)
 Imports:
     readr,
-    rgdal,
     sf,
     stringr
 Suggest:
