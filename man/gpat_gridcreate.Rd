@@ -4,12 +4,14 @@
 \alias{gpat_gridcreate}
 \title{Grid polygon creator}
 \usage{
-gpat_gridcreate(x, proj = TRUE)
+gpat_gridcreate(x, proj = TRUE, brick = FALSE)
 }
 \arguments{
 \item{x}{A filepath to the geoPAT 2.0 grid header file}
 
 \item{proj}{TRUE/FALSE; should a new grid polygon inherit spatial projection from the geoPAT 2.0 grid header file}
+
+\item{brick}{TRUE/FALSE; should a new grid polygon have a brick topology}
 }
 \value{
 sfc_POLYGON
@@ -20,5 +22,9 @@ Creates a polygon of a geoPAT grid based on the grid header
 \examples{
 header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package="rgeopat2")
 my_grid = gpat_gridcreate(header_filepath)
+my_grid_brick = gpat_gridcreate(header_filepath, brick = TRUE)
+
+plot(my_grid)
+plot(my_grid_brick, add = TRUE, border = "red", lwd = 3)
 
 }

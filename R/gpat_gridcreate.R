@@ -4,18 +4,24 @@
 #'
 #' @param x A filepath to the geoPAT 2.0 grid header file
 #' @param proj TRUE/FALSE; should a new grid polygon inherit spatial projection from the geoPAT 2.0 grid header file
+#' @param brick TRUE/FALSE; should a new grid polygon have a brick topology
 #'
 #' @return sfc_POLYGON
 #'
 #' @importFrom sf %>% st_polygon st_sfc st_set_crs st_sf
+#' @importFrom stats aggregate
 #'
 #' @examples
 #' header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package="rgeopat2")
 #' my_grid = gpat_gridcreate(header_filepath)
+#' my_grid_brick = gpat_gridcreate(header_filepath, brick = TRUE)
+#'
+#' plot(my_grid)
+#' plot(my_grid_brick, add = TRUE, border = "red", lwd = 3)
 #'
 #' @export
 
-gpat_gridcreate = function(x, proj = TRUE){
+gpat_gridcreate = function(x, proj = TRUE, brick = FALSE){
   header = gpat_header_parser(x)
 
   x1 = header$start_x
@@ -35,7 +41,9 @@ gpat_gridcreate = function(x, proj = TRUE){
     my_bb = my_bb %>%
       st_set_crs(header$proj_4)
   }
-  my_grid = gpat_st_make_grid(my_bb, n = c(header$n_cols, header$n_rows))
+  my_grid = gpat_st_make_grid(my_bb,
+                              n = c(header$n_cols, header$n_rows),
+                              brick = brick)
   my_grid
 }
 
@@ -69,15 +77,14 @@ gpat_header_parser = function(x){
 #' Creates a polygon of a gpat grid based on a given parameters
 #'
 #' @param x An object of class sf or sfc
-#' @param cellsize A target cellsize
-#' @param offset A numeric of length 2; upper left corner coordinates (x, y) of the grid
 #' @param n An integer of length 1 or 2, number of grid cells in x and y direction (columns, rows)
+#' @param brick TRUE/FALSE; should a new grid polygon have a brick topology
 #'
 #' @references Based on the st_make_grid function from the sf package
 #'
 #' @return sfc_POLYGON
 #'
-#' @importFrom sf %>% st_bbox st_polygon st_sfc st_crs
+#' @importFrom sf %>% st_bbox st_polygon st_sfc st_crs st_cast
 #'
 #' @examples
 #' \dontrun{
@@ -97,12 +104,11 @@ gpat_header_parser = function(x){
 #'   geom_text(data = grid_centroids, aes(x = X, y = Y, label = id)) +
 #'   theme_void()
 #' }
-gpat_st_make_grid = function (x,
-                                cellsize = c(diff(st_bbox(x)[c(1, 3)]),
-                                             diff(st_bbox(x)[c(2,4)]))/n,
-                                offset = st_bbox(x)[c(1,4)],
-                                n = c(10, 10)) {
+gpat_st_make_grid = function(x,
+                              n = c(10, 10),
+                              brick = FALSE){
 
+  offset = st_bbox(x)[c(1, 4)]
   bb = st_bbox(x)
   n = rep(n, length.out = 2)
   nx = n[1]
@@ -120,5 +126,24 @@ gpat_st_make_grid = function (x,
     }
   }
 
-  st_sf(st_sfc(ret, crs = st_crs(x)))
+  my_grid = st_sf(st_sfc(ret, crs = st_crs(x)))
+
+  if (brick){
+    ids_y = rep(c(1, 1, 2, 2), length.out = ny)
+    ids = numeric(length = nrow(my_grid))
+
+    for (i in seq_len(ny)){
+      ids_y_i = ids_y[i]
+      if (ids_y_i == 1){
+        ids[seq_len(nx) + (i - 1) * nx] = rep(c(1:12), each = 2, length.out = nx)
+      } else if (ids_y_i == 2){
+        ids[seq_len(nx) + (i - 1) * nx] = c(13, rep(c(14:24), each = 2, length.out = nx-1))
+      }
+    }
+    my_grid = aggregate(my_grid, by = list(ids), mean) %>%
+      st_cast(to = "POLYGON", warn = FALSE)
+    my_grid$Group.1 = NULL
+  }
+
+  return(my_grid)
 }

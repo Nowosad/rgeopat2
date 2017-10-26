@@ -4,17 +4,14 @@
 \alias{gpat_st_make_grid}
 \title{Grid polygon creator (without a header)}
 \usage{
-gpat_st_make_grid(x, cellsize = c(diff(st_bbox(x)[c(1, 3)]),
-  diff(st_bbox(x)[c(2, 4)]))/n, offset = st_bbox(x)[c(1, 4)], n = c(10, 10))
+gpat_st_make_grid(x, n = c(10, 10), brick = FALSE)
 }
 \arguments{
 \item{x}{An object of class sf or sfc}
 
-\item{cellsize}{A target cellsize}
-
-\item{offset}{A numeric of length 2; upper left corner coordinates (x, y) of the grid}
-
 \item{n}{An integer of length 1 or 2, number of grid cells in x and y direction (columns, rows)}
+
+\item{brick}{TRUE/FALSE; should a new grid polygon have a brick topology}
 }
 \value{
 sfc_POLYGON
