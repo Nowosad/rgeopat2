@@ -4,12 +4,10 @@
 \alias{gpat_gridcreate}
 \title{Grid polygon creator}
 \usage{
-gpat_gridcreate(x, proj = TRUE, brick = FALSE)
+gpat_gridcreate(x, brick = FALSE)
 }
 \arguments{
 \item{x}{A filepath to the geoPAT 2.0 grid header file}
-
-\item{proj}{TRUE/FALSE; should a new grid polygon inherit spatial projection from the geoPAT 2.0 grid header file}
 
 \item{brick}{TRUE/FALSE; should a new grid polygon have a brick topology}
 }

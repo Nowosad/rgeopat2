@@ -3,7 +3,6 @@
 #' Creates a polygon of a geoPAT grid based on the grid header
 #'
 #' @param x A filepath to the geoPAT 2.0 grid header file
-#' @param proj TRUE/FALSE; should a new grid polygon inherit spatial projection from the geoPAT 2.0 grid header file
 #' @param brick TRUE/FALSE; should a new grid polygon have a brick topology
 #'
 #' @return sfc_POLYGON
@@ -20,8 +19,7 @@
 #' plot(my_grid_brick, add = TRUE, border = "red", lwd = 3)
 #'
 #' @export
-
-gpat_gridcreate = function(x, proj = TRUE, brick = FALSE){
+gpat_gridcreate = function(x, brick = FALSE){
   header = gpat_header_parser(x)
 
   x1 = header$start_x
@@ -37,10 +35,11 @@ gpat_gridcreate = function(x, proj = TRUE, brick = FALSE){
     st_polygon() %>%
     st_sfc()
 
-  if (proj){
+  if (header$proj_4 != ""){
     my_bb = my_bb %>%
-      st_set_crs(header$proj_4)
+      st_set_crs(value = header$proj_4)
   }
+
   my_grid = gpat_st_make_grid(my_bb,
                               n = c(header$n_cols, header$n_rows),
                               brick = brick)
@@ -57,6 +56,7 @@ gpat_gridcreate = function(x, proj = TRUE, brick = FALSE){
 #'
 #' @importFrom sf %>% st_crs
 #' @importFrom stringr str_sub
+#' @importFrom utils capture.output
 gpat_header_parser = function(x){
   x = readLines(x)
   res_x = str_sub(x[5], start=6) %>% as.double()
@@ -65,11 +65,17 @@ gpat_header_parser = function(x){
   start_y = str_sub(x[7], start=6) %>% as.double()
   n_rows = str_sub(x[10], start=7) %>% as.integer()
   n_cols = str_sub(x[11], start=7) %>% as.integer()
-  proj_4 = st_crs(wkt = str_sub(x[12], start=7))$proj4string
+
+  # proj_4 = tryCatch({st_crs(wkt = str_sub(x[12], start=7))$proj4string},
+  #                   error = function(e) "")
+
+  invisible(capture.output({proj_4 = tryCatch({st_crs(wkt = "")$proj4string},
+                    error = function(e) "")}))
+
   data.frame(res_x = res_x, res_y = res_y,
-             start_x = start_x, start_y = start_y,
-             n_rows = n_rows, n_cols = n_cols,
-             proj_4 = proj_4, stringsAsFactors = FALSE)
+           start_x = start_x, start_y = start_y,
+           n_rows = n_rows, n_cols = n_cols,
+           proj_4 = proj_4, stringsAsFactors = FALSE)
 }
 
 #' Grid polygon creator (without a header)

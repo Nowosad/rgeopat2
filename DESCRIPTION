@@ -1,6 +1,6 @@
 Package: rgeopat2
 Title: Additional functions for geoPAT 2.0
-Version: 0.0.6
+Version: 0.0.7
 Authors@R: person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
