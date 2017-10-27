@@ -135,19 +135,26 @@ gpat_st_make_grid = function(x,
   my_grid = st_sf(st_sfc(ret, crs = st_crs(x)))
 
   if (brick){
-    ids_y = rep(c(1, 1, 2, 2), length.out = ny)
-    ids = numeric(length = nrow(my_grid))
+    ids_y = rep(c(1, 1, 2, 2), length.out = ny) # rows groups
+    ids = numeric(length = nrow(my_grid)) # local ids
 
+    spatial_ids = seq_len(nx %/% 2 + 1) # starting cell numbers in columns
     for (i in seq_len(ny)){
-      ids_y_i = ids_y[i]
+      ids_y_i = ids_y[i] # which row group
       if (ids_y_i == 1){
-        ids[seq_len(nx) + (i - 1) * nx] = rep(c(1:12), each = 2, length.out = nx)
+        ids[seq_len(nx) + (i - 1) * nx] = rep(spatial_ids, each = 2, length.out = nx) # add cell numbers
       } else if (ids_y_i == 2){
-        ids[seq_len(nx) + (i - 1) * nx] = c(13, rep(c(14:24), each = 2, length.out = nx-1))
+        if (ids_y[i-1] != ids_y[i]){ # if row group changed (yes)
+          spatial_ids = spatial_ids + (nx %/% 2 + 1) # new cell numbers in columns
+          ids[seq_len(nx) + (i - 1) * nx] = c(spatial_ids[1], rep(spatial_ids[-1], each = 2, length.out = nx-1)) # add cell numbers
+        } else {
+          ids[seq_len(nx) + (i - 1) * nx] = c(spatial_ids[1], rep(spatial_ids[-1], each = 2, length.out = nx-1)) # add cell numbers
+          spatial_ids = spatial_ids + (nx %/% 2 + 1) # new cell numbers in columns
+        }
       }
     }
     my_grid = aggregate(my_grid, by = list(ids), mean) %>%
-      st_cast(to = "POLYGON", warn = FALSE)
+      st_cast(to = "POLYGON", warn = FALSE) # aggregate by ids and convert to POLYGON
     my_grid$Group.1 = NULL
   }
 
