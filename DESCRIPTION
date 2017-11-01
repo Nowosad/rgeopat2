@@ -1,6 +1,6 @@
 Package: rgeopat2
 Title: Additional Functions for geoPAT 2.0
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -14,14 +14,13 @@ Imports:
     readr,
     sf,
     stringr
-Suggest:
-    tidyverse
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Suggests: covr,
-    testthat
+    testthat,
+    tidyverse
 URL: https://github.com/Nowosad/rgeopat2
 BugReports: https://github.com/Nowosad/rgeopat2/issues

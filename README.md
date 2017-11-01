@@ -29,4 +29,4 @@ my_grid = gpat_gridcreate(header_filepath)
 plot(my_grid)
 ```
 
-![](README-example-1.png)
+![](man/figures/README-example-1.png)

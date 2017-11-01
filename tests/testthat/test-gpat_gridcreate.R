@@ -14,9 +14,4 @@ test_that("grid is created", {
   # shift cannot be different from size
   header_filepath2 = system.file("rawdata/Augusta2011_grid_size_shift.hdr", package="rgeopat2")
   expect_error(gpat_gridcreate(header_filepath2))
-
-  # test projection
-  header_filepath3 = system.file("rawdata/Augusta2011_grid_missing_proj.hdr", package="rgeopat2")
-  expect_equal(dim(gpat_gridcreate(header_filepath3)), c(322, 1))
-
 })
