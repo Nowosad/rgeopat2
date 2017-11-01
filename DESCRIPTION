@@ -1,5 +1,5 @@
 Package: rgeopat2
-Title: Additional functions for geoPAT 2.0
+Title: Additional Functions for geoPAT 2.0
 Version: 0.1.1
 Authors@R: c(person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
