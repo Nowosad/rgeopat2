@@ -1,10 +1,12 @@
 Package: rgeopat2
 Title: Additional functions for geoPAT 2.0
-Version: 0.0.8
-Authors@R: person("Jakub", "Nowosad", 
+Version: 0.1.0
+Authors@R: c(person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
-    comment = c(ORCID = "0000-0002-1057-3721"))
+    comment = c(ORCID = "0000-0002-1057-3721")),
+    person("Space Informatics Lab", role = c("cph"))
+    )
 Description: Supports analysis of spatial data processed with the geoPAT 2.0 software. 
     Available features include creation of a grid based on the geoPAT 2.0 grid header file.
 Depends: R (>= 3.4.1)
