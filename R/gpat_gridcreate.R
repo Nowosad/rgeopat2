@@ -55,7 +55,7 @@ gpat_gridcreate = function(x, brick = FALSE){
 #' @return data_frame
 #'
 #' @importFrom sf %>% st_crs
-#' @importFrom stringr str_sub
+#' @importFrom stringr str_sub str_split str_which
 #' @importFrom utils capture.output
 gpat_header_parser = function(x){
   x = readLines(x)
