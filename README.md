@@ -5,12 +5,18 @@ rgeopat2
 
 [![Build Status](https://travis-ci.org/Nowosad/rgeopat2.png?branch=master)](https://travis-ci.org/Nowosad/rgeopat2) [![codecov](https://codecov.io/gh/Nowosad/rgeopat2/branch/master/graph/badge.svg)](https://codecov.io/gh/Nowosad/rgeopat2) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rgeopat2)](https://cran.r-project.org/package=rgeopat2)
 
-The goal of rgeopat2 is to enhance the functionality of [geoPAT 2.0](http://sil.uc.edu/cms/index.php?id=geopat2).
+The goal of `rgeopat2` is to enhance the functionality of [geoPAT 2.0](http://sil.uc.edu/cms/index.php?id=geopat2).
 
 Installation
 ------------
 
-You can install rgeopat2 from github with:
+Get the released version from CRAN:
+
+``` r
+install.packages("rgeopat2")
+```
+
+Get the development version from github:
 
 ``` r
 # install.packages("devtools")

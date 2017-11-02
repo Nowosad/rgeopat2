@@ -139,7 +139,7 @@ gpat_st_make_grid = function(x,
     }
   }
 
-  my_grid = st_sf(st_sfc(ret, crs = st_crs(x)))
+  my_grid = st_sf(geometry = st_sfc(ret, crs = st_crs(x)))
 
   if (brick){
     ids_y = rep(c(1, 1, 2, 2), length.out = ny) # rows groups
