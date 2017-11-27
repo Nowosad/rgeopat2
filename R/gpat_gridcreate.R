@@ -74,7 +74,7 @@ gpat_header_parser = function(x){
   }
   shift = as.numeric(desc[str_which(desc, "-f")+1])
   if (length(shift) == 0){
-    size = as.numeric(gsub("\\D", "", desc[str_which(desc, "--shift=")]))
+    shift = as.numeric(gsub("\\D", "", desc[str_which(desc, "--shift=")]))
   }
   # test if size != shift
   if (size != shift){
