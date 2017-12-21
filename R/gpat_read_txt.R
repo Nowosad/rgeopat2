@@ -6,10 +6,8 @@
 #'
 #' @return data.frame
 #'
-#' @importFrom readr read_lines
+#' @importFrom readr read_delim
 #' @importFrom stringr str_extract
-#' @importFrom stats as.dist
-#' @importFrom utils read.table
 #'
 #' @examples
 #' polygon_filepath = system.file("rawdata/Augusta2011_polygon.txt", package = "rgeopat2")
