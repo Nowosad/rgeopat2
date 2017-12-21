@@ -25,7 +25,8 @@ gpat_read_txt = function(x){
   clean_first_col = df$X2 %>%
     gsub("(?)(.*)(?=>)", "", ., perl = TRUE) %>%
     gsub("\\> ", "", ., perl = TRUE) %>%
-    data.frame(X1 = .)
+    as.numeric() %>%
+    data.frame(X1 = ., stringsAsFactors = FALSE)
 
   df = cbind(clean_first_col, df[- c(1, 2)])
   names(df) = paste0("X", seq_along(df))
