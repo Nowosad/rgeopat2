@@ -20,7 +20,7 @@
 #'
 #' @export
 gpat_read_txt = function(x){
-  lines = read_lines(x)
+  lines = read_lines(x, progress = FALSE)
   obj_name = str_extract(lines, '"([^"]*)"') %>% str_extract("\\(?[0-9,.]+\\)?")
   clean_lines = lines %>%
     gsub("(?<=\\[)(.*)(?=>)", "", ., perl = TRUE) %>%
