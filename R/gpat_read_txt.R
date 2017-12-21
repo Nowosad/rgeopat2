@@ -20,15 +20,15 @@
 #'
 #' @export
 gpat_read_txt = function(x){
-  lines = read_lines(x, progress = FALSE)
-  obj_name = str_extract(lines, '"([^"]*)"') %>% str_extract("\\(?[0-9,.]+\\)?")
-  clean_lines = lines %>%
-    gsub("(?<=\\[)(.*)(?=>)", "", ., perl = TRUE) %>%
-    gsub("\\[> ", "", ., perl = TRUE)
-  n_cols = strsplit(clean_lines[[1]], split = ",") %>%
-    unlist() %>%
-    length()
-  p = read.table(text = clean_lines, sep = ",")
-  p$name = as.numeric(obj_name)
-  return(p)
+  df = suppressMessages(read_delim(x, delim = ",", col_names = FALSE, progress = FALSE))
+  obj_name = str_extract(df$X2, '"([^"]*)"') %>% str_extract("\\(?[0-9,.]+\\)?")
+  clean_first_col = df$X2 %>%
+    gsub("(?)(.*)(?=>)", "", ., perl = TRUE) %>%
+    gsub("\\> ", "", ., perl = TRUE) %>%
+    data.frame(X1 = .)
+
+  df = cbind(clean_first_col, df[- c(1, 2)])
+  names(df) = paste0("X", seq_along(df))
+  df$name = as.numeric(obj_name)
+  return(df)
 }
