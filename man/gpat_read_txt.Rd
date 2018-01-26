@@ -4,10 +4,12 @@
 \alias{gpat_read_txt}
 \title{Read a geoPAT 2.0 text output}
 \usage{
-gpat_read_txt(x)
+gpat_read_txt(x, signature = NULL)
 }
 \arguments{
 \item{x}{A filepath to the geoPAT 2.0 text file}
+
+\item{signature}{A signature used to create a geoPAT 2.0 text output}
 }
 \value{
 data.frame
@@ -21,5 +23,11 @@ my_polygon = gpat_read_txt(polygon_filepath)
 
 points_filepath = system.file("rawdata/Augusta2011_points.txt", package = "rgeopat2")
 my_points = gpat_read_txt(points_filepath)
+
+lind_filepath = system.file("rawdata/Augusta2011_lind.txt", package = "rgeopat2")
+my_lind = gpat_read_txt(lind_filepath, signature = "lind")
+
+linds_filepath = system.file("rawdata/Augusta2011_linds.txt", package = "rgeopat2")
+my_linds = gpat_read_txt(linds_filepath, signature = "linds")
 
 }

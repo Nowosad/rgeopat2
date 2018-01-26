@@ -3,6 +3,7 @@
 #' Read a text output of the geoPAT 2.0 functions into R
 #'
 #' @param x A filepath to the geoPAT 2.0 text file
+#' @param signature A signature used to create a geoPAT 2.0 text output
 #'
 #' @return data.frame
 #'
@@ -16,6 +17,12 @@
 #' points_filepath = system.file("rawdata/Augusta2011_points.txt", package = "rgeopat2")
 #' my_points = gpat_read_txt(points_filepath)
 #'
+#' lind_filepath = system.file("rawdata/Augusta2011_lind.txt", package = "rgeopat2")
+#' my_lind = gpat_read_txt(lind_filepath, signature = "lind")
+#'
+#' linds_filepath = system.file("rawdata/Augusta2011_linds.txt", package = "rgeopat2")
+#' my_linds = gpat_read_txt(linds_filepath, signature = "linds")
+#'
 #' @export
 gpat_read_txt = function(x, signature = NULL){
   df = suppressMessages(read_delim(x, delim = ",", col_names = FALSE, progress = FALSE))
@@ -26,12 +33,14 @@ gpat_read_txt = function(x, signature = NULL){
     as.numeric() %>%
     data.frame(X1 = ., stringsAsFactors = FALSE)
   df = cbind(clean_first_col, df[- c(1, 2)])
-  if (signature == "lind"){
-    names(df) = c(landscape_level, paste0(rep(class_level, each = length(df)), "_", seq_len(length(df))))
-  } else if (signature == "linds"){
-    names(df) = landscape_level
-  } else {
+  if (is.null(signature)){
     names(df) = paste0("X", seq_along(df))
+  } else if (signature == "lind"){
+    n = (length(df) - length(landscape_level)) / length(class_level)
+    names(df) = c(landscape_level, paste0(rep(class_level, each = n), "_", seq_len(n)))
+  } else if (signature == "linds"){
+    n = (length(df) - length(landscape_level)) / length(class_level)
+    names(df) = c(landscape_level, paste0("pland", "_", seq_len(n)))
   }
   df$name = as.numeric(obj_name)
   return(df)
