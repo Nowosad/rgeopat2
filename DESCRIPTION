@@ -11,7 +11,7 @@ Description: Supports analysis of spatial data processed with the 'geoPAT' 2.0
     software <http://sil.uc.edu/cms/index.php?id=geopat2>. 
     Available features include creation of a grid based on the 'geoPAT' 2.0
     grid header file.
-Depends: R (>= 3.4.1)
+Depends: R (>= 3.3.0)
 Imports:
     readr,
     sf,
