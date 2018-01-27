@@ -3,7 +3,7 @@
 #' Read a text output of the geoPAT 2.0 functions into R
 #'
 #' @param x A filepath to the geoPAT 2.0 text file
-#' @param signature A signature used to create a geoPAT 2.0 text output (supported signatures: "lind", "linds")
+#' @param signature A signature used to create the geoPAT 2.0 text output (supported signatures: "lind", "linds")
 #'
 #' @return data.frame
 #'
