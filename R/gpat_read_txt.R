@@ -3,7 +3,7 @@
 #' Read a text output of the geoPAT 2.0 functions into R
 #'
 #' @param x A filepath to the geoPAT 2.0 text file
-#' @param signature A signature used to create a geoPAT 2.0 text output
+#' @param signature A signature used to create a geoPAT 2.0 text output (supported signatures: "lind", "linds")
 #'
 #' @return data.frame
 #'
@@ -41,6 +41,8 @@ gpat_read_txt = function(x, signature = NULL){
   } else if (signature == "linds"){
     n = (length(df) - length(landscape_level)) / length(class_level)
     names(df) = c(landscape_level, paste0("pland", "_", seq_len(n)))
+  } else {
+    stop("This signature is not supported")
   }
   df$name = as.numeric(obj_name)
   return(df)
