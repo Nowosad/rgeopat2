@@ -30,7 +30,7 @@ This is a basic example which shows you how to create a grid polygon based on th
 
 ``` r
 library(rgeopat2)
-header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package="rgeopat2")
+header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package = "rgeopat2")
 my_grid = gpat_gridcreate(header_filepath)
 plot(my_grid)
 ```
