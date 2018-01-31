@@ -26,6 +26,9 @@
 #' grid_filepath = system.file("rawdata/Augusta2011_grid100.txt", package = "rgeopat2")
 #' my_grid = gpat_read_txt(grid_filepath)
 #'
+#' gridlinds_filepath = system.file("rawdata/Augusta2011_grid_linds.txt", package = "rgeopat2")
+#' my_grid = gpat_read_txt(gridlinds_filepath, signature = "linds")
+#'
 #' @export
 gpat_read_txt = function(x, signature = NULL){
   df = suppressMessages(read_delim(x, delim = ",", col_names = FALSE, progress = FALSE))
@@ -42,7 +45,7 @@ gpat_read_txt = function(x, signature = NULL){
     n = (length(df) - length(landscape_level)) / length(class_level)
     names(df) = c(landscape_level, paste0(rep(class_level, each = n), "_", seq_len(n)))
   } else if (signature == "linds"){
-    n = (length(df) - length(landscape_level)) / length(class_level)
+    n = (length(df) - length(landscape_level))
     names(df) = c(landscape_level, paste0("pland", "_", seq_len(n)))
   }
   if (str_detect(obj_desc[1], "cat")){
