@@ -12,14 +12,14 @@
 #'
 #' @examples
 #' header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package="rgeopat2")
-#' my_grid = gpat_gridcreate(header_filepath)
-#' my_grid_brick = gpat_gridcreate(header_filepath, brick = TRUE)
+#' my_grid = gpat_create_grid(header_filepath)
+#' my_grid_brick = gpat_create_grid(header_filepath, brick = TRUE)
 #'
 #' plot(my_grid)
 #' plot(my_grid_brick, add = TRUE, border = "red", lwd = 3)
 #'
 #' @export
-gpat_gridcreate = function(x, brick = FALSE){
+gpat_create_grid = function(x, brick = FALSE){
   header = gpat_header_parser(x)
 
   x1 = header$start_x
