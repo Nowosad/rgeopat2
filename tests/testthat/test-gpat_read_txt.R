@@ -42,3 +42,21 @@ test_that("read linds", {
   expect_equal(nrow(gpat_read_txt(my_linds, signature = "linds")), 19)
 
 })
+
+test_that("read grid", {
+
+  my_grid = system.file("rawdata/Augusta2011_grid100.txt", package = "rgeopat2")
+
+  # data is intact
+  expect_equal(nrow(gpat_read_txt(my_grid)), 322)
+
+})
+
+test_that("read gridlinds", {
+
+  my_gridlinds = system.file("rawdata/Augusta2011_grid_linds.txt", package="rgeopat2")
+
+  # data is intact
+  expect_equal(nrow(gpat_read_txt(my_gridlinds, signature = "linds")), 322)
+
+})
