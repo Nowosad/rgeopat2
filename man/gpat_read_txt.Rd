@@ -30,4 +30,7 @@ my_lind = gpat_read_txt(lind_filepath, signature = "lind")
 linds_filepath = system.file("rawdata/Augusta2011_linds.txt", package = "rgeopat2")
 my_linds = gpat_read_txt(linds_filepath, signature = "linds")
 
+grid_filepath = system.file("rawdata/Augusta2011_grid100.txt", package = "rgeopat2")
+my_grid = gpat_read_txt(grid_filepath)
+
 }
