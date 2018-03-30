@@ -1,4 +1,4 @@
-library(tidyverse)
+library(dplyr)
 library(sf)
 british_isles = rnaturalearth::ne_countries(scale = 50, continent = "Europe", returnclass = "sf") %>%
   filter(admin %in% c("United Kingdom", "Ireland")) %>%

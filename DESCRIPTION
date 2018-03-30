@@ -1,6 +1,6 @@
 Package: rgeopat2
 Title: Additional Functions for 'geoPAT' 2.0
-Version: 0.2.4
+Version: 0.2.5
 Authors@R: c(person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -22,7 +22,6 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Suggests: covr,
-    testthat,
-    tidyverse
+    testthat
 URL: https://github.com/Nowosad/rgeopat2
 BugReports: https://github.com/Nowosad/rgeopat2/issues
