@@ -1,8 +1,8 @@
-#' Read a geoPAT 2.0 text output
+#' Read a geoPAT 2 text output
 #'
-#' Read a text output of the geoPAT 2.0 functions into R
+#' Read a text output of the geoPAT 2 functions into R
 #'
-#' @param x A filepath to the geoPAT 2.0 text file
+#' @param x A filepath to the geoPAT 2 text file
 #' @param signature A signature used to create the geoPAT 2.0 text output (supported signatures: "lind", "linds")
 #'
 #' @return data.frame

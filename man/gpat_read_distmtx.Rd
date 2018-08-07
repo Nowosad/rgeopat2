@@ -7,7 +7,7 @@
 gpat_read_distmtx(x)
 }
 \arguments{
-\item{x}{A filepath to the geoPAT 2.0 distance matrix file}
+\item{x}{A filepath to the geoPAT 2 distance matrix file}
 }
 \value{
 dist

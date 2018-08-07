@@ -7,7 +7,7 @@
 gpat_create_grid(x, brick = FALSE)
 }
 \arguments{
-\item{x}{A filepath to the geoPAT 2.0 grid header file}
+\item{x}{A filepath to the geoPAT 2 grid header file}
 
 \item{brick}{TRUE/FALSE; should a new grid polygon have a brick topology}
 }
