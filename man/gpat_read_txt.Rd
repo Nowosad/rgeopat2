@@ -9,7 +9,7 @@ gpat_read_txt(x, signature = NULL)
 \arguments{
 \item{x}{A filepath to the geoPAT 2 text file}
 
-\item{signature}{A signature used to create the geoPAT 2.0 text output (supported signatures: "lind", "linds")}
+\item{signature}{A signature used to create the geoPAT 2 text output (supported signatures: "lind", "linds")}
 }
 \value{
 data.frame
