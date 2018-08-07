@@ -2,7 +2,7 @@
 #'
 #' Creates a polygon of a geoPAT grid based on the grid header
 #'
-#' @param x A filepath to the geoPAT 2.0 grid header file
+#' @param x A filepath to the geoPAT 2 grid header file
 #' @param brick TRUE/FALSE; should a new grid polygon have a brick topology
 #'
 #' @return sfc_POLYGON
@@ -46,11 +46,11 @@ gpat_create_grid = function(x, brick = FALSE){
   my_grid
 }
 
-#' Parse a header of a geoPAT 2.0 grid file
+#' Parse a header of a geoPAT 2 grid file
 #'
-#' Extracts basic information from a geoPAT 2.0 grid header file
+#' Extracts basic information from a geoPAT 2 grid header file
 #'
-#' @param x A filepath to the geoPAT 2.0 grid header file
+#' @param x A filepath to the geoPAT 2 grid header file
 #'
 #' @return data_frame
 #'
@@ -65,6 +65,7 @@ gpat_header_parser = function(x){
   start_y = str_sub(x[7], start=6) %>% as.double()
   n_rows = str_sub(x[10], start=7) %>% as.integer()
   n_cols = str_sub(x[11], start=7) %>% as.integer()
+  proj_wkt = str_sub(x[12], start=7)
 
   # extract size and shift
   desc = str_split(x[13], "\\|", simplify = TRUE)
@@ -81,13 +82,13 @@ gpat_header_parser = function(x){
     stop("We don't support overlapping grids (where size != shift). Open a new issue on our github page if you want this option")
   }
 
-  invisible(capture.output({proj_4 = tryCatch({st_crs(wkt = "")$proj4string},
-                    error = function(e) "")}))
+  invisible(capture.output({proj_4 = tryCatch({st_crs(wkt = proj_wkt)$proj4string},
+                                              error = function(e) "")}))
 
   data.frame(res_x = res_x, res_y = res_y,
-           start_x = start_x, start_y = start_y,
-           n_rows = n_rows, n_cols = n_cols,
-           proj_4 = proj_4, stringsAsFactors = FALSE)
+             start_x = start_x, start_y = start_y,
+             n_rows = n_rows, n_cols = n_cols,
+             proj_4 = proj_4, stringsAsFactors = FALSE)
 }
 
 #' Grid polygon creator (without a header)
