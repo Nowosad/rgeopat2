@@ -1,5 +1,5 @@
 Package: rgeopat2
-Title: Additional Functions for 'geoPAT' 2
+Title: Additional Functions for 'GeoPAT' 2
 Version: 0.2.6
 Authors@R: c(person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
@@ -7,9 +7,9 @@ Authors@R: c(person("Jakub", "Nowosad",
     comment = c(ORCID = "0000-0002-1057-3721")),
     person("Space Informatics Lab", role = c("cph"))
     )
-Description: Supports analysis of spatial data processed with the 'geoPAT' 2
+Description: Supports analysis of spatial data processed with the 'GeoPAT' 2
     software <http://sil.uc.edu/cms/index.php?id=geopat2>. 
-    Available features include creation of a grid based on the 'geoPAT' 2
+    Available features include creation of a grid based on the 'GeoPAT' 2
     grid header file.
 Depends: R (>= 3.3.0)
 Imports:
