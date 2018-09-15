@@ -10,7 +10,7 @@ Authors@R: c(person("Jakub", "Nowosad",
 Description: Supports analysis of spatial data processed with the 'GeoPAT' 2
     software <http://sil.uc.edu/cms/index.php?id=geopat2>. 
     Available features include creation of a grid based on the 'GeoPAT' 2
-    grid header file and reading a `GeoPAT` 2 text ouputs.
+    grid header file and reading a 'GeoPAT' 2 text ouputs.
 Depends: R (>= 3.3.0)
 Imports:
     readr,
