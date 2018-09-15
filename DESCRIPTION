@@ -10,7 +10,7 @@ Authors@R: c(person("Jakub", "Nowosad",
 Description: Supports analysis of spatial data processed with the 'GeoPAT' 2
     software <http://sil.uc.edu/cms/index.php?id=geopat2>. 
     Available features include creation of a grid based on the 'GeoPAT' 2
-    grid header file.
+    grid header file and reading a `GeoPAT` 2 text ouputs.
 Depends: R (>= 3.3.0)
 Imports:
     readr,
@@ -20,7 +20,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Suggests: covr,
     testthat
 URL: https://github.com/Nowosad/rgeopat2

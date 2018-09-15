@@ -1,6 +1,6 @@
-#' Read a geoPAT distance matrix
+#' Read a GeoPAT distance matrix
 #'
-#' Read a geoPAT distance matrix into R
+#' Read a GeoPAT distance matrix into R
 #'
 #' @param x A filepath to the geoPAT 2 distance matrix file
 #'

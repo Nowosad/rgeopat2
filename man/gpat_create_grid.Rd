@@ -7,7 +7,7 @@
 gpat_create_grid(x, brick = FALSE)
 }
 \arguments{
-\item{x}{A filepath to the geoPAT 2 grid header file}
+\item{x}{A filepath to the GeoPAT 2 grid header file}
 
 \item{brick}{TRUE/FALSE; should a new grid polygon have a brick topology}
 }
@@ -15,7 +15,7 @@ gpat_create_grid(x, brick = FALSE)
 sfc_POLYGON
 }
 \description{
-Creates a polygon of a geoPAT grid based on the grid header
+Creates a polygon of a GeoPAT 2 grid based on the grid header
 }
 \examples{
 header_filepath = system.file("rawdata/Augusta2011_grid100.hdr", package="rgeopat2")

@@ -1,8 +1,8 @@
 #' Grid polygon creator
 #'
-#' Creates a polygon of a geoPAT grid based on the grid header
+#' Creates a polygon of a GeoPAT 2 grid based on the grid header
 #'
-#' @param x A filepath to the geoPAT 2 grid header file
+#' @param x A filepath to the GeoPAT 2 grid header file
 #' @param brick TRUE/FALSE; should a new grid polygon have a brick topology
 #'
 #' @return sfc_POLYGON
@@ -46,11 +46,11 @@ gpat_create_grid = function(x, brick = FALSE){
   my_grid
 }
 
-#' Parse a header of a geoPAT 2 grid file
+#' Parse a header of a GeoPAT 2 grid file
 #'
 #' Extracts basic information from a geoPAT 2 grid header file
 #'
-#' @param x A filepath to the geoPAT 2 grid header file
+#' @param x A filepath to the GeoPAT 2 grid header file
 #'
 #' @return data_frame
 #'
@@ -93,7 +93,7 @@ gpat_header_parser = function(x){
 
 #' Grid polygon creator (without a header)
 #'
-#' Creates a polygon of a gpat grid based on a given parameters
+#' Creates a polygon of a GeoPAT grid based on a given parameters
 #'
 #' @param x An object of class sf or sfc
 #' @param n An integer of length 1 or 2, number of grid cells in x and y direction (columns, rows)

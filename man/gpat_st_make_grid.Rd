@@ -17,7 +17,7 @@ gpat_st_make_grid(x, n = c(10, 10), brick = FALSE)
 sfc_POLYGON
 }
 \description{
-Creates a polygon of a gpat grid based on a given parameters
+Creates a polygon of a GeoPAT grid based on a given parameters
 }
 \examples{
 \dontrun{

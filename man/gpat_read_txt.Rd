@@ -2,20 +2,20 @@
 % Please edit documentation in R/gpat_read_txt.R
 \name{gpat_read_txt}
 \alias{gpat_read_txt}
-\title{Read a geoPAT 2 text output}
+\title{Read a GeoPAT 2 text output}
 \usage{
 gpat_read_txt(x, signature = NULL)
 }
 \arguments{
-\item{x}{A filepath to the geoPAT 2 text file}
+\item{x}{A filepath to the GeoPAT 2 text file}
 
-\item{signature}{A signature used to create the geoPAT 2 text output (supported signatures: "lind", "linds")}
+\item{signature}{A signature used to create the GeoPAT 2 text output (supported signatures: "lind", "linds")}
 }
 \value{
 data.frame
 }
 \description{
-Read a text output of the geoPAT 2 functions into R
+Read a text output of the GeoPAT 2 functions into R
 }
 \examples{
 polygon_filepath = system.file("rawdata/Augusta2011_polygon.txt", package = "rgeopat2")
