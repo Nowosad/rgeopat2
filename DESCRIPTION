@@ -1,6 +1,6 @@
 Package: rgeopat2
 Title: Additional Functions for 'GeoPAT' 2
-Version: 0.2.6
+Version: 0.2.7
 Authors@R: c(person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -20,7 +20,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: covr,
     testthat
 URL: https://github.com/Nowosad/rgeopat2
