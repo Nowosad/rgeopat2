@@ -14,7 +14,7 @@ gpat_st_make_grid(x, n = c(10, 10), brick = FALSE)
 \item{brick}{TRUE/FALSE; should a new grid polygon have a brick topology}
 }
 \value{
-sfc_POLYGON
+sf
 }
 \description{
 Creates a polygon of a GeoPAT grid based on a given parameters
@@ -24,8 +24,8 @@ Creates a polygon of a GeoPAT grid based on a given parameters
 library(sf)
 nc = st_read(system.file("shape/nc.shp", package="sf"))
 
-my_grid = gpat_st_make_grid(nc) \%>\%
-  st_as_sf(data.frame(id = 1:100), .)
+my_grid = gpat_st_make_grid(nc)
+my_grid$id = 1:100
 
 grid_centroids = st_centroid(my_grid) \%>\%
   st_coordinates(grid_centroids) \%>\%

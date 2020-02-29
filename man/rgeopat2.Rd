@@ -3,7 +3,6 @@
 \docType{package}
 \name{rgeopat2}
 \alias{rgeopat2}
-\alias{rgeopat2-package}
 \title{rgeopat2.}
 \description{
 rgeopat2.

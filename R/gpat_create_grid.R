@@ -5,7 +5,7 @@
 #' @param x A filepath to the GeoPAT 2 grid header file
 #' @param brick TRUE/FALSE; should a new grid polygon have a brick topology
 #'
-#' @return sfc_POLYGON
+#' @return sf
 #'
 #' @importFrom sf %>% st_polygon st_sfc st_set_crs st_sf
 #' @importFrom stats aggregate
@@ -101,7 +101,7 @@ gpat_header_parser = function(x){
 #'
 #' @references Based on the st_make_grid function from the sf package
 #'
-#' @return sfc_POLYGON
+#' @return sf
 #'
 #' @importFrom sf %>% st_bbox st_polygon st_sfc st_crs st_cast
 #'
@@ -110,8 +110,8 @@ gpat_header_parser = function(x){
 #' library(sf)
 #' nc = st_read(system.file("shape/nc.shp", package="sf"))
 #'
-#' my_grid = gpat_st_make_grid(nc) %>%
-#'   st_as_sf(data.frame(id = 1:100), .)
+#' my_grid = gpat_st_make_grid(nc)
+#' my_grid$id = 1:100
 #'
 #' grid_centroids = st_centroid(my_grid) %>%
 #'   st_coordinates(grid_centroids) %>%
@@ -166,10 +166,38 @@ gpat_st_make_grid = function(x,
         }
       }
     }
+    n = c(length(spatial_ids), max(ids) / length(spatial_ids))
+
     my_grid = aggregate(my_grid, by = list(ids), mean) %>%
       st_cast(to = "POLYGON", warn = FALSE) # aggregate by ids and convert to POLYGON
     my_grid$Group.1 = NULL
   }
 
+  df_ids = create_ids(n[1], n[2])
+
+  my_grid = st_sf(data.frame(my_grid, df_ids))
+
   return(my_grid)
 }
+
+create_ids = function(num_c, num_r){
+  m = 1
+  m_row = 1
+  m_col = 1
+
+  result = data.frame(col = integer(length = num_r * num_c),
+                      row = integer(length = num_r * num_c))
+
+  for (i in seq_len(num_r)){
+    for (j in seq_len(num_c)){
+      result[m, "col"] = m_col
+      result[m, "row"] = m_row
+      m = m + 1
+      m_col = m_col + 1
+    }
+    m_col = 1
+    m_row = m_row + 1
+  }
+  return(result)
+}
+

@@ -12,7 +12,7 @@ gpat_create_grid(x, brick = FALSE)
 \item{brick}{TRUE/FALSE; should a new grid polygon have a brick topology}
 }
 \value{
-sfc_POLYGON
+sf
 }
 \description{
 Creates a polygon of a GeoPAT 2 grid based on the grid header
