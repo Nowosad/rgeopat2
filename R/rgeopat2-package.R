@@ -1,7 +1,8 @@
-#' rgeopat2.
-#'
-#' @name rgeopat2
-#' @docType package
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
+## usethis namespace: end
 NULL
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines

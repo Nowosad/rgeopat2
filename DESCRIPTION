@@ -1,6 +1,6 @@
 Package: rgeopat2
 Title: Additional Functions for 'GeoPAT' 2
-Version: 0.3.9
+Version: 0.4.0
 Authors@R: c(person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -8,7 +8,7 @@ Authors@R: c(person("Jakub", "Nowosad",
     person("Space Informatics Lab", role = c("cph"))
     )
 Description: Supports analysis of spatial data processed with the 'GeoPAT' 2
-    software <http://sil.uc.edu/cms/index.php?id=geopat2>. 
+    software <https://github.com/Nowosad/geopat2>. 
     Available features include creation of a grid based on the 'GeoPAT' 2
     grid header file and reading a 'GeoPAT' 2 text outputs.
 Depends: R (>= 3.3.0)
@@ -20,7 +20,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.2.3
 Suggests: covr,
     testthat
 URL: https://github.com/Nowosad/rgeopat2

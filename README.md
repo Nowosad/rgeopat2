@@ -3,13 +3,10 @@
 
 # rgeopat2
 
-[![Build
-Status](https://travis-ci.org/Nowosad/rgeopat2.png?branch=master)](https://travis-ci.org/Nowosad/rgeopat2)
-[![codecov](https://codecov.io/gh/Nowosad/rgeopat2/branch/master/graph/badge.svg)](https://codecov.io/gh/Nowosad/rgeopat2)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rgeopat2)](https://cran.r-project.org/package=rgeopat2)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rgeopat2)](https://cran.r-project.org/package=rgeopat2)
 
-The goal of `rgeopat2` is to enhance the functionality of
-[geoPAT 2](http://sil.uc.edu/cms/index.php?id=geopat2).
+The goal of `rgeopat2` is to enhance the functionality of [geoPAT
+2](https://github.com/Nowosad/geopat2).
 
 ## Installation
 
