@@ -15,23 +15,23 @@
 #' polygon_filepath = system.file("rawdata/Augusta2011_polygon.txt", package = "rgeopat2")
 #' my_polygon = gpat_read_txt(polygon_filepath)
 #'
-#' points_filepath = system.file("rawdata/Augusta2011_points.txt", package = "rgeopat2")
-#' my_points = gpat_read_txt(points_filepath)
+#' # points_filepath = system.file("rawdata/Augusta2011_points.txt", package = "rgeopat2")
+#' # my_points = gpat_read_txt(points_filepath)
 #'
-#' lind_filepath = system.file("rawdata/Augusta2011_lind.txt", package = "rgeopat2")
-#' my_lind = gpat_read_txt(lind_filepath, signature = "lind")
+#' # lind_filepath = system.file("rawdata/Augusta2011_lind.txt", package = "rgeopat2")
+#' # my_lind = gpat_read_txt(lind_filepath, signature = "lind")
 #'
-#' linds_filepath = system.file("rawdata/Augusta2011_linds.txt", package = "rgeopat2")
-#' my_linds = gpat_read_txt(linds_filepath, signature = "linds")
+#' # linds_filepath = system.file("rawdata/Augusta2011_linds.txt", package = "rgeopat2")
+#' # my_linds = gpat_read_txt(linds_filepath, signature = "linds")
 #'
-#' grid_filepath = system.file("rawdata/Augusta2011_grid100.txt", package = "rgeopat2")
-#' my_grid = gpat_read_txt(grid_filepath)
+#' # grid_filepath = system.file("rawdata/Augusta2011_grid100.txt", package = "rgeopat2")
+#' # my_grid = gpat_read_txt(grid_filepath)
 #'
-#' gridlinds_filepath = system.file("rawdata/Augusta2011_grid_linds.txt", package = "rgeopat2")
-#' my_grid = gpat_read_txt(gridlinds_filepath, signature = "linds")
+#' # gridlinds_filepath = system.file("rawdata/Augusta2011_grid_linds.txt", package = "rgeopat2")
+#' # my_grid = gpat_read_txt(gridlinds_filepath, signature = "linds")
 #'
-#' gridts_filepath = system.file("rawdata/barent_ts_grd.txt", package = "rgeopat2")
-#' my_gridts = gpat_read_txt(gridts_filepath, signature = "ts")
+#' # gridts_filepath = system.file("rawdata/barent_ts_grd.txt", package = "rgeopat2")
+#' # my_gridts = gpat_read_txt(gridts_filepath, signature = "ts")
 #'
 #' @export
 gpat_read_txt = function(x, signature = NULL){
