@@ -38,4 +38,4 @@ plot(my_grid)
 ![](man/figures/README-example-1.png)<!-- -->
 
 More examples can be found in [GeoPAT 2
-manual](https://rawgit.com/Nowosad/geopat2_manual/master/output/GeoPAT2_Manual.pdf).
+manual](http://doi.org/10.5281/zenodo.1291123).

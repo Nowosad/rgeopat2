@@ -40,12 +40,16 @@ gpat_read_txt = function(x, signature = NULL){
     df$X2 = paste0(df$X2, df$X3)
     df$X3 = NULL
   }
-  obj_desc = str_extract(df$X2, '"([^"]*)"') %>% str_replace_all('\"', "")
-  clean_first_col = df$X2 %>%
-    gsub("(?)(.*)(?=>)", "", ., perl = TRUE) %>%
-    gsub("\\> ", "", ., perl = TRUE) %>%
-    as.numeric() %>%
-    data.frame(X1 = ., stringsAsFactors = FALSE)
+obj_desc <- df$X2 |>
+  str_extract('"([^"]*)"') |>
+  str_replace_all('"', "")
+
+clean_first_col <- df$X2 |>
+  (\(x) gsub("(?)(.*)(?=>)", "", x, perl = TRUE))() |>
+  (\(x) gsub("\\> ", "", x, perl = TRUE))() |>
+  as.numeric() |>
+  (\(x) data.frame(X1 = x, stringsAsFactors = FALSE))()
+  
   df = cbind(clean_first_col, df[-c(1, 2)])
   if (is.null(signature) || signature == "ts"){
     names(df) = paste0("X", seq_along(df))
@@ -59,10 +63,10 @@ gpat_read_txt = function(x, signature = NULL){
     names(df) = c("Shannon_entropy", "number_of_categories", "object_size")
   }
   if (str_detect(obj_desc[1], "cat")){
-    obj_name = str_extract(obj_desc, "\\(?[0-9,.]+\\)?") %>% as.numeric()
+    obj_name = str_extract(obj_desc, "\\(?[0-9,.]+\\)?") |> as.numeric()
     df$cat = obj_name
   } else if (str_detect(obj_desc[1], "loc")){
-    obj_name = str_extract(obj_desc, "\\(?[0-9,.]+\\)?") %>% as.numeric()
+    obj_name = str_extract(obj_desc, "\\(?[0-9,.]+\\)?") |> as.numeric()
     df$loc = obj_name
   } else{
     obj_desc = str_split(obj_desc, "_", simplify = TRUE)

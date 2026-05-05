@@ -7,7 +7,7 @@
 #'
 #' @return sf
 #'
-#' @importFrom sf %>% st_polygon st_sfc st_set_crs st_sf
+#' @importFrom sf st_polygon st_sfc st_set_crs st_sf
 #' @importFrom stats aggregate
 #'
 #' @examples
@@ -31,12 +31,12 @@ gpat_create_grid = function(x, brick = FALSE){
     list(rbind(c(x1, y1), c(x1, y2), c(x2, y2), c(x2, y1), c(x1, y1)))
   }
 
-  my_bb = single_cell_creator(x1, y1, x2, y2) %>%
-    st_polygon() %>%
+  my_bb = single_cell_creator(x1, y1, x2, y2) |>
+    st_polygon() |>
     st_sfc()
 
   if (header$proj_4 != ""){
-    my_bb = my_bb %>%
+    my_bb = my_bb |>
       st_set_crs(value = header$proj_4)
   }
 
@@ -54,17 +54,17 @@ gpat_create_grid = function(x, brick = FALSE){
 #'
 #' @return data_frame
 #'
-#' @importFrom sf %>% st_crs
+#' @importFrom sf st_crs
 #' @importFrom stringr str_sub str_split str_which
 #' @importFrom utils capture.output
 gpat_header_parser = function(x){
   x = readLines(x)
-  res_x = str_sub(x[5], start=6) %>% as.double()
-  res_y = str_sub(x[9], start=6) %>% as.double()
-  start_x = str_sub(x[4], start=6) %>% as.double()
-  start_y = str_sub(x[7], start=6) %>% as.double()
-  n_rows = str_sub(x[10], start=7) %>% as.integer()
-  n_cols = str_sub(x[11], start=7) %>% as.integer()
+  res_x = str_sub(x[5], start=6) |> as.double()
+  res_y = str_sub(x[9], start=6) |> as.double()
+  start_x = str_sub(x[4], start=6) |> as.double()
+  start_y = str_sub(x[7], start=6) |> as.double()
+  n_rows = str_sub(x[10], start=7) |> as.integer()
+  n_cols = str_sub(x[11], start=7) |> as.integer()
   proj_wkt = str_sub(x[12], start=7)
 
   # extract size and shift
@@ -103,7 +103,7 @@ gpat_header_parser = function(x){
 #'
 #' @return sf
 #'
-#' @importFrom sf %>% st_bbox st_polygon st_sfc st_crs st_cast
+#' @importFrom sf st_bbox st_polygon st_sfc st_crs st_cast
 #'
 #' @examples
 #' \dontrun{
@@ -113,9 +113,9 @@ gpat_header_parser = function(x){
 #' my_grid = gpat_st_make_grid(nc)
 #' my_grid$id = 1:100
 #'
-#' grid_centroids = st_centroid(my_grid) %>%
-#'   st_coordinates(grid_centroids) %>%
-#'   as_data_frame() %>%
+#' grid_centroids = st_centroid(my_grid) |>
+#'   st_coordinates(grid_centroids) |>
+#'   as_data_frame() |>
 #'   mutate(id = 1:100)
 #'
 #' ggplot() +
@@ -168,7 +168,7 @@ gpat_st_make_grid = function(x,
     }
     n = c(length(spatial_ids), max(ids) / length(spatial_ids))
 
-    my_grid = aggregate(my_grid, by = list(ids), mean) %>%
+    my_grid = aggregate(my_grid, by = list(ids), mean) |>
       st_cast(to = "POLYGON", warn = FALSE) # aggregate by ids and convert to POLYGON
     my_grid$Group.1 = NULL
   }

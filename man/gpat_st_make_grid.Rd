@@ -27,9 +27,9 @@ nc = st_read(system.file("shape/nc.shp", package="sf"))
 my_grid = gpat_st_make_grid(nc)
 my_grid$id = 1:100
 
-grid_centroids = st_centroid(my_grid) \%>\%
-  st_coordinates(grid_centroids) \%>\%
-  as_data_frame() \%>\%
+grid_centroids = st_centroid(my_grid) |>
+  st_coordinates(grid_centroids) |>
+  as_data_frame() |>
   mutate(id = 1:100)
 
 ggplot() +

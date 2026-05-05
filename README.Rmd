@@ -44,4 +44,4 @@ my_grid = gpat_create_grid(header_filepath)
 plot(my_grid)
 ```
 
-More examples can be found in [GeoPAT 2 manual](https://rawgit.com/Nowosad/geopat2_manual/master/output/GeoPAT2_Manual.pdf). 
+More examples can be found in [GeoPAT 2 manual](http://doi.org/10.5281/zenodo.1291123). 
